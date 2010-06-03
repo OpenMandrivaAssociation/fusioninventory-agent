@@ -1,5 +1,5 @@
 Name:		fusioninventory-agent
-Version:	2.0.3
+Version:	2.0.6
 Release:	%mkrel 1
 Summary:	Linux agent for OCSNG
 License:	GPL
@@ -7,6 +7,8 @@ Group:		System/Servers
 URL:		http://fusioninventory.org/wordpress/
 Source0:	http://search.cpan.org/CPAN/authors/id/F/FU/FUSINV/FusionInventory-Agent-%{version}.tar.gz
 Source1:	%{name}.init
+Patch0:     FusionInventory-Agent-2.0.6-fix-syslog-usage.patch
+Patch1:     FusionInventory-Agent-2.0.6-add-bios-informations-for-xen-pv-hosts.patch
 BuildArch:  noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
@@ -15,6 +17,8 @@ FusionInventory-Agent is an agent for OCS NG & GLPI.
 
 %prep
 %setup -q -n FusionInventory-Agent-%{version}
+%patch0 -p 1
+%patch1 -p 1
 
 %build
 %__perl Makefile.PL INSTALLDIRS=vendor
