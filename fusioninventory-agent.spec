@@ -1,6 +1,6 @@
 Name:		fusioninventory-agent
 Version:	2.0.6
-Release:	%mkrel 1
+Release:	%mkrel 2
 Summary:	Linux agent for OCSNG
 License:	GPL
 Group:		System/Servers
@@ -9,6 +9,7 @@ Source0:	http://search.cpan.org/CPAN/authors/id/F/FU/FUSINV/FusionInventory-Agen
 Source1:	%{name}.init
 Patch0:     FusionInventory-Agent-2.0.6-fix-syslog-usage.patch
 Patch1:     FusionInventory-Agent-2.0.6-add-bios-informations-for-xen-pv-hosts.patch
+Patch2:     FusionInventory-Agent-2.0.6-dont-run-fdisk-for-cdroms.patch
 BuildArch:  noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
@@ -19,6 +20,7 @@ FusionInventory-Agent is an agent for OCS NG & GLPI.
 %setup -q -n FusionInventory-Agent-%{version}
 %patch0 -p 1
 %patch1 -p 1
+%patch2 -p 1
 
 %build
 %__perl Makefile.PL INSTALLDIRS=vendor
