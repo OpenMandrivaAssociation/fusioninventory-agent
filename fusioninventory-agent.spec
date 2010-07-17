@@ -1,15 +1,14 @@
+%define pre rc2
+
 Name:		fusioninventory-agent
-Version:	2.0.6
-Release:	%mkrel 2
+Version:	2.1
+Release:	%mkrel 0.%{pre}.1
 Summary:	Linux agent for OCSNG
 License:	GPL
 Group:		System/Servers
 URL:		http://fusioninventory.org/wordpress/
-Source0:	http://search.cpan.org/CPAN/authors/id/F/FU/FUSINV/FusionInventory-Agent-%{version}.tar.gz
+Source0:	http://forge.fusioninventory.org/attachments/download/85/FusionInventory-Agent-%{version}_%{pre}.tar.gz
 Source1:	%{name}.init
-Patch0:     FusionInventory-Agent-2.0.6-fix-syslog-usage.patch
-Patch1:     FusionInventory-Agent-2.0.6-add-bios-informations-for-xen-pv-hosts.patch
-Patch2:     FusionInventory-Agent-2.0.6-dont-run-fdisk-for-cdroms.patch
 BuildArch:  noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
@@ -17,10 +16,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}
 FusionInventory-Agent is an agent for OCS NG & GLPI.
 
 %prep
-%setup -q -n FusionInventory-Agent-%{version}
-%patch0 -p 1
-%patch1 -p 1
-%patch2 -p 1
+%setup -q -n FusionInventory-Agent-%{version}_%{pre}
 
 %build
 %__perl Makefile.PL INSTALLDIRS=vendor
@@ -62,12 +58,13 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS Changes README THANKS LICENSE
+%doc AUTHORS Changes THANKS LICENSE
 %{_bindir}/fusioninventory-agent
 %{_bindir}/fusioninventory-agent-config
 %{_mandir}/man1/*
 %{_mandir}/man3/*
 %{perl_vendorlib}/FusionInventory
+%{perl_vendorlib}/auto/share/dist/FusionInventory-Agent
 %{_localstatedir}/log/fusioninventory-agent
 %config(noreplace) %{_sysconfdir}/sysconfig/fusioninventory-agent
 %config(noreplace) %{_sysconfdir}/logrotate.d/fusioninventory-agent
