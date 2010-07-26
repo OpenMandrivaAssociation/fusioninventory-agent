@@ -1,4 +1,4 @@
-%define pre rc2
+%define pre rc3
 
 Name:		fusioninventory-agent
 Version:	2.1
