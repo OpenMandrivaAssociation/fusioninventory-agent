@@ -2,7 +2,7 @@
 
 Name:		fusioninventory-agent
 Version:	2.1
-Release:	%mkrel 0.%{pre}.1
+Release:	%mkrel 0.%{pre}.2
 Summary:	Linux agent for OCSNG
 License:	GPL
 Group:		System/Servers
@@ -52,6 +52,7 @@ install -d -m 755 %{buildroot}%{_initrddir}
 install -m 755 %{SOURCE1} %{buildroot}%{_initrddir}/fusioninventory-agent
 
 install -d -m 755 %{buildroot}%{_localstatedir}/log/%{name}
+install -d -m 755 %{buildroot}%{_localstatedir}/lib/%{name}
 
 %clean
 rm -rf %{buildroot}
@@ -66,6 +67,7 @@ rm -rf %{buildroot}
 %{perl_vendorlib}/FusionInventory
 %{perl_vendorlib}/auto/share/dist/FusionInventory-Agent
 %{_localstatedir}/log/fusioninventory-agent
+%{_localstatedir}/lib/fusioninventory-agent
 %config(noreplace) %{_sysconfdir}/sysconfig/fusioninventory-agent
 %config(noreplace) %{_sysconfdir}/logrotate.d/fusioninventory-agent
 %config(noreplace) %{_sysconfdir}/cron.daily/fusioninventory-agent
