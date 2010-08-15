@@ -1,13 +1,12 @@
-%define pre rc3
 
 Name:		fusioninventory-agent
 Version:	2.1
-Release:	%mkrel 0.%{pre}.2
+Release:	%mkrel 1
 Summary:	Linux agent for OCSNG
 License:	GPL
 Group:		System/Servers
 URL:		http://fusioninventory.org/wordpress/
-Source0:	http://forge.fusioninventory.org/attachments/download/85/FusionInventory-Agent-%{version}_%{pre}.tar.gz
+Source0:	http://forge.fusioninventory.org/attachments/download/85/FusionInventory-Agent-%{version}.tar.gz
 Source1:	%{name}.init
 BuildArch:  noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}
@@ -16,7 +15,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}
 FusionInventory-Agent is an agent for OCS NG & GLPI.
 
 %prep
-%setup -q -n FusionInventory-Agent-%{version}_%{pre}
+%setup -q -n FusionInventory-Agent-%{version}
 
 %build
 %__perl Makefile.PL INSTALLDIRS=vendor
