@@ -1,12 +1,12 @@
 
 Name:		fusioninventory-agent
-Version:	2.1
+Version:	2.1.1
 Release:	%mkrel 1
 Summary:	Linux agent for OCSNG
 License:	GPL
 Group:		System/Servers
 URL:		http://fusioninventory.org/wordpress/
-Source0:	http://forge.fusioninventory.org/attachments/download/85/FusionInventory-Agent-%{version}.tar.gz
+Source0:	http://search.cpan.org/CPAN/authors/id/F/FU/FUSINV/FusionInventory-Agent-%{version}.tar.gz
 Source1:	%{name}.init
 BuildArch:  noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}
