@@ -1,6 +1,6 @@
 
 Name:		fusioninventory-agent
-Version:	2.1.6
+Version:	2.1.7
 Release:	%mkrel 1
 Summary:	Linux agent for OCSNG
 License:	GPL
@@ -61,6 +61,7 @@ rm -rf %{buildroot}
 %doc AUTHORS Changes THANKS LICENSE
 %{_bindir}/fusioninventory-agent
 %{_bindir}/fusioninventory-agent-config
+%{_bindir}/fusioninventory-injector
 %{_mandir}/man1/*
 %{_mandir}/man3/*
 %{perl_vendorlib}/FusionInventory
