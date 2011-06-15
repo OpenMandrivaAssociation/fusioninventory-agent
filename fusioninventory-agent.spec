@@ -1,6 +1,6 @@
 
 Name:		fusioninventory-agent
-Version:	2.1.8
+Version:	2.1.9
 Release:	%mkrel 1
 Summary:	Linux agent for OCSNG
 License:	GPL
