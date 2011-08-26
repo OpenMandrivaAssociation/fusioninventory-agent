@@ -1,7 +1,7 @@
 
 Name:		fusioninventory-agent
 Version:	2.1.9
-Release:	%mkrel 1
+Release:	%mkrel 2
 Summary:	Linux agent for OCSNG
 License:	GPL
 Group:		System/Servers
@@ -10,6 +10,7 @@ Source0:	http://search.cpan.org/CPAN/authors/id/F/FU/FUSINV/FusionInventory-Agen
 Source1:	%{name}.init
 BuildArch:  noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}
+Requires:	perl-Net-SSLeay
 
 %description
 FusionInventory-Agent is an agent for OCS NG & GLPI.
@@ -29,7 +30,8 @@ rm -f run-postinst
 install -d -m 755 %{buildroot}%{_sysconfdir}/cron.daily
 cat > %{buildroot}%{_sysconfdir}/cron.daily/fusioninventory-agent <<EOF
 #!/bin/sh
-%{_bindir}/fusioninventory-agent > /dev/null 2>&1
+. /etc/sysconfig/fusioninventory-agent
+%{_bindir}/fusioninventory-agent --no-ssl-check --server="\${SERVER}" > /dev/null 2>&1
 EOF
 chmod 755 %{buildroot}%{_sysconfdir}/cron.daily/fusioninventory-agent
 
@@ -73,3 +75,6 @@ rm -rf %{buildroot}
 %config(noreplace) %{_sysconfdir}/cron.daily/fusioninventory-agent
 %{_initrddir}/fusioninventory-agent
 
+
+
+%changelog
