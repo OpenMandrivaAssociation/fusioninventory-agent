@@ -1,7 +1,10 @@
+%if %{_use_internal_dependency_generator}
+%define __noautoreq 'perl\\(Win32(.*)\\)'
+%endif
 
 Name:		fusioninventory-agent
 Version:	2.1.9
-Release:	%mkrel 2
+Release:	4
 Summary:	Linux agent for OCSNG
 License:	GPL
 Group:		System/Servers
@@ -9,8 +12,8 @@ URL:		http://fusioninventory.org/wordpress/
 Source0:	http://search.cpan.org/CPAN/authors/id/F/FU/FUSINV/FusionInventory-Agent-%{version}.tar.gz
 Source1:	%{name}.init
 BuildArch:  noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}
 Requires:	perl-Net-SSLeay
+BuildRequires: perl-devel
 
 %description
 FusionInventory-Agent is an agent for OCS NG & GLPI.
@@ -23,7 +26,6 @@ FusionInventory-Agent is an agent for OCS NG & GLPI.
 %make
 
 %install
-rm -rf  %{buildroot}
 rm -f run-postinst
 %makeinstall_std
 
@@ -55,11 +57,7 @@ install -m 755 %{SOURCE1} %{buildroot}%{_initrddir}/fusioninventory-agent
 install -d -m 755 %{buildroot}%{_localstatedir}/log/%{name}
 install -d -m 755 %{buildroot}%{_localstatedir}/lib/%{name}
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc AUTHORS Changes THANKS LICENSE
 %{_bindir}/fusioninventory-agent
 %{_bindir}/fusioninventory-agent-config
@@ -75,6 +73,3 @@ rm -rf %{buildroot}
 %config(noreplace) %{_sysconfdir}/cron.daily/fusioninventory-agent
 %{_initrddir}/fusioninventory-agent
 
-
-
-%changelog
