@@ -4,13 +4,14 @@
 
 Name:		fusioninventory-agent
 Version:	2.1.9
-Release:	4
+Release:	6
 Summary:	Linux agent for OCSNG
+
 License:	GPL
 Group:		System/Servers
 URL:		http://fusioninventory.org/wordpress/
 Source0:	http://search.cpan.org/CPAN/authors/id/F/FU/FUSINV/FusionInventory-Agent-%{version}.tar.gz
-Source1:	%{name}.init
+Source1:	%{name}.service
 BuildArch:  noarch
 Requires:	perl-Net-SSLeay
 BuildRequires: perl-devel
@@ -51,8 +52,8 @@ cat > %{buildroot}%{_sysconfdir}/sysconfig/fusioninventory-agent <<EOF
 SERVER="localhost"
 EOF
 
-install -d -m 755 %{buildroot}%{_initrddir}
-install -m 755 %{SOURCE1} %{buildroot}%{_initrddir}/fusioninventory-agent
+install -d -m 755 %{buildroot}%{_unitdir}
+install -m 755 %{SOURCE1} %{buildroot}%{_unitdir}/fusioninventory-agent.service
 
 install -d -m 755 %{buildroot}%{_localstatedir}/log/%{name}
 install -d -m 755 %{buildroot}%{_localstatedir}/lib/%{name}
@@ -71,5 +72,4 @@ install -d -m 755 %{buildroot}%{_localstatedir}/lib/%{name}
 %config(noreplace) %{_sysconfdir}/sysconfig/fusioninventory-agent
 %config(noreplace) %{_sysconfdir}/logrotate.d/fusioninventory-agent
 %config(noreplace) %{_sysconfdir}/cron.daily/fusioninventory-agent
-%{_initrddir}/fusioninventory-agent
-
+%{_unitdir}/fusioninventory-agent.service
