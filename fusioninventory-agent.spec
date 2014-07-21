@@ -6,12 +6,12 @@ Name:		fusioninventory-agent
 Version:	2.1.9
 Release:	6
 Summary:	Linux agent for OCSNG
-
 License:	GPL
 Group:		System/Servers
 URL:		http://fusioninventory.org/wordpress/
 Source0:	http://search.cpan.org/CPAN/authors/id/F/FU/FUSINV/FusionInventory-Agent-%{version}.tar.gz
 Source1:	%{name}.service
+Source100:	%{name}.rpmlintrc
 BuildArch:  noarch
 Requires:	perl-Net-SSLeay
 BuildRequires: perl-devel
