@@ -4,7 +4,7 @@
 
 Name:		fusioninventory-agent
 Version:	2.1.9
-Release:	6
+Release:	8
 Summary:	Linux agent for OCSNG
 License:	GPL
 Group:		System/Servers
@@ -73,3 +73,13 @@ install -d -m 755 %{buildroot}%{_localstatedir}/lib/%{name}
 %config(noreplace) %{_sysconfdir}/logrotate.d/fusioninventory-agent
 %config(noreplace) %{_sysconfdir}/cron.daily/fusioninventory-agent
 %{_unitdir}/fusioninventory-agent.service
+
+%post
+%systemd_post %{name}.service
+
+%preun
+%systemd_preun %{name}.service
+
+%postun
+%systemd_postun_with_restart %{name}.service
+
