@@ -4,7 +4,7 @@
 
 Name:		fusioninventory-agent
 Version:	2.1.9
-Release:	8
+Release:	9
 Summary:	Linux agent for OCSNG
 License:	GPL
 Group:		System/Servers
