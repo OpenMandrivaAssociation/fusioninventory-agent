@@ -14,6 +14,7 @@ Source1:	%{name}.service
 Source100:	%{name}.rpmlintrc
 BuildArch:  noarch
 Requires:	perl-Net-SSLeay
+BuildRequires:	make
 BuildRequires: perl-devel
 
 %description
